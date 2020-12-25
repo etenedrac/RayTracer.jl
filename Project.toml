@@ -1,0 +1,13 @@
+name = "RayTracer"
+uuid = "be56bf3c-3fa2-4c2c-974f-c185241bb5ad"
+authors = ["Albert Cardenete <albertcardenete95@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
