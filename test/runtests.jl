@@ -1,6 +1,6 @@
 using RayTracer
 using Test
 
-@testset "RayTracer.jl" begin
-    # Write your tests here.
+@testset "Tuples" begin
+    include("tuples.jl")
 end
