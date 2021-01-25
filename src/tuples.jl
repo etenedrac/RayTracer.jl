@@ -5,6 +5,16 @@ struct rt_tuple{T<:Real}
     w::Int
 end
 
+struct rt_color{T<:Real}
+    red::T
+    green::T
+    blue::T
+end
+
+function color(r::Real,g::Real,b::Real)
+    return rt_color(promote(r,g,b)...)
+end
+
 
 function tuple(x::Real,y::Real,z::Real,w::Int)
     return rt_tuple(promote(x,y,z)...,w)
@@ -152,4 +162,30 @@ julia> dot(a,b)
 """
 function cross(a::rt_tuple,b::rt_tuple)
     return vector(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x)
+end
+
+# Color Operations
+
+function Base.isapprox(a::rt_color,b::rt_color)
+    return (a.red≈b.red) && (a.green≈b.green) && (a.blue≈b.blue)
+end
+
+function Base.:+(a::rt_color,b::rt_color)::rt_color
+    return color(a.red+b.red,a.green+b.green,a.blue+b.blue)
+end
+
+function Base.:-(a::rt_color,b::rt_color)::rt_color
+    return color(a.red-b.red,a.green-b.green,a.blue-b.blue)
+end
+
+function Base.:*(a::rt_color,b::Real)::rt_color
+    return color(b*a.red,b*a.green,b*a.blue)
+end
+
+function Base.:*(b::Real,a::rt_color)::rt_color
+    return color(b*a.red,b*a.green,b*a.blue)
+end
+
+function Base.:*(a::rt_color,b::rt_color)::rt_color
+    return color(b.red*a.red,b.green*a.green,b.blue*a.blue)
 end

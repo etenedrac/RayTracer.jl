@@ -1,7 +1,7 @@
 module RayTracer
     import Base
 
-    # Write your package code here.
     include("tuples.jl")
+    include("canvas.jl")
 
 end

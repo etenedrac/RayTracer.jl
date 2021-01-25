@@ -1,7 +1,7 @@
 name = "RayTracer"
 uuid = "be56bf3c-3fa2-4c2c-974f-c185241bb5ad"
 authors = ["Albert Cardenete <albertcardenete95@gmail.com> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [compat]
 julia = "1"

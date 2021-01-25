@@ -120,3 +120,32 @@ end
         @test RayTracer.cross(b,a) ≈ RayTracer.vector(1,-2,1)
     end
 end
+
+@testset "colors" begin
+    @testset "clors_are_tuples" begin
+        c = RayTracer.color(-0.5,0.4,1.7)
+        @test c.red ≈ -0.5
+        @test c.green ≈ 0.4
+        @test c.blue ≈ 1.7
+    end
+    @testset "adding colors" begin
+        c1 = RayTracer.color(0.9,0.6,0.75)
+        c2 = RayTracer.color(0.7,0.1,0.25)
+        @test c1 + c2 ≈ RayTracer.color(1.6,0.7,1.0)
+    end
+    @testset "subtracting_colors" begin
+        c1 = RayTracer.color(0.9,0.6,0.75)
+        c2 = RayTracer.color(0.7,0.1,0.25)
+        @test c1 - c2 ≈ RayTracer.color(0.2,0.5,0.5)
+    end
+    @testset "multiplying_color_by_scalar" begin
+        c = RayTracer.color(0.2,0.3,0.4)
+        @test c * 2 ≈ RayTracer.color(0.4,0.6,0.8)
+        @test 2 * c ≈ RayTracer.color(0.4,0.6,0.8)
+    end
+    @testset "multiplying_colors" begin
+        c1 = RayTracer.color(1,0.2,0.4)
+        c2 = RayTracer.color(0.9,1,0.1)
+        @test c1 * c2 ≈ RayTracer.color(0.9,0.2,0.04)
+    end
+end
