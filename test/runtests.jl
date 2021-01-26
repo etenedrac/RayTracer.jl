@@ -8,3 +8,7 @@ end
 @testset "Canvas" begin
     include("canvas.jl")
 end
+
+@testset "Transformations" begin
+    include("transformations.jl")
+end

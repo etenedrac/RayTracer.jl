@@ -70,8 +70,8 @@ end
 
 # Tuple Operations
 
-function Base.isapprox(a::rt_tuple,b::rt_tuple)
-    return (a.x≈b.x) && (a.y≈b.y) && (a.z≈b.z) && (a.w≈b.w)
+function Base.isapprox(a::rt_tuple,b::rt_tuple,atol::Real=0)
+    return (≈(a.x,b.x,atol=atol)) && (≈(a.y,b.y,atol=atol)) && (≈(a.z,b.z,atol=atol)) && (a.w≈b.w)
 end
 
 function Base.:+(a::rt_tuple,b::rt_tuple)::rt_tuple
@@ -96,6 +96,12 @@ end
 
 function Base.:/(a::rt_tuple,b::Real)::rt_tuple
     return tuple(a.x/b,a.y/b,a.z/b,a.w)
+end
+
+function Base.:*(b::Array{T,2},a::rt_tuple)::rt_tuple where {T<:Real}
+    v = [a.x;a.y;a.z;a.w]
+    r = b*v
+    return tuple(r[1],r[2],r[3],convert(Int, round(r[4], digits=0)))
 end
 
 # Tuple Methods
@@ -188,4 +194,19 @@ end
 
 function Base.:*(a::rt_color,b::rt_color)::rt_color
     return color(b.red*a.red,b.green*a.green,b.blue*a.blue)
+end
+
+
+# Matrix Operations
+
+function submatrix(a::Array{T,2},r::Int,c::Int)::Array{T,2} where {T<:Real}
+    return a[1:end .!= r,1:end .!=c]
+end
+
+function minor(a::Array{T,2},r::Int,c::Int)::T where {T<:Real}
+    return det(submatrix(a,r,c))
+end
+
+function cofactor(a::Array{T,2},r::Int,c::Int)::T where {T<:Real}
+    return (1*((r+c)%2==0) - 1*((r+c)%2==1))*minor(a,r,c)
 end
