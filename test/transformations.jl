@@ -181,6 +181,6 @@ end
     A = RayTracer.rotation_x(π/2)
     B = RayTracer.scaling(5,5,5)
     C = RayTracer.translation(10,5,7)
-    T = C*B*A
-    @test ≈(T*p,RayTracer.point(15,0,7),1e-10)
+    D = C*B*A
+    @test ≈(D*p,RayTracer.point(15,0,7),1e-10)
 end

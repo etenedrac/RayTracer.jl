@@ -2,14 +2,14 @@
 mutable struct canvas
     width::Int
     height::Int
-    grid::Array{RayTracer.rt_color{Float64},2}
+    grid::Array{RayTracer.rt_color,2}
 end
 
-Base.convert(::Type{RayTracer.rt_color{Float64}}, x::RayTracer.rt_color) = RayTracer.color(
+Base.convert(::Type{RayTracer.rt_color}, x::RayTracer.rt_color) = RayTracer.color(
     float(x.red), float(x.green), float(x.blue)
 )
 
-Base.promote_rule(::Type{RayTracer.rt_color{Float64}}, ::Type{RayTracer.rt_color{Integer}}) = RayTracer.rt_color{Float64}
+#Base.promote_rule(::Type{RayTracer.rt_color}, ::Type{RayTracer.rt_color{Integer}}) = RayTracer.rt_color{Float64}
 
 function canvas(width::Int,height::Int)::canvas
     return canvas(width,height,fill(color(0.,0.,0.),(width,height)))

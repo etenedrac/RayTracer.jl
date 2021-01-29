@@ -1,14 +1,14 @@
-struct rt_tuple{T<:Real}
-    x::T
-    y::T
-    z::T
+struct rt_tuple
+    x::Float64
+    y::Float64
+    z::Float64
     w::Int
 end
 
-struct rt_color{T<:Real}
-    red::T
-    green::T
-    blue::T
+struct rt_color
+    red::Float64
+    green::Float64
+    blue::Float64
 end
 
 function color(r::Real,g::Real,b::Real)
@@ -51,7 +51,7 @@ function point(x,y,z)
 end
 
 "Check whether rt_tuple{T} is a vector (w=0) or not."
-function is_vector(a::rt_tuple{T}) where {T<:Real}
+function is_vector(a::rt_tuple)
     if a.w == 0
         return true
     else
@@ -60,7 +60,7 @@ function is_vector(a::rt_tuple{T}) where {T<:Real}
 end
 
 "Check whether rt_tuple{T} is a point (w=1) or not."
-function is_point(a::rt_tuple{T}) where {T<:Real}
+function is_point(a::rt_tuple)
     if a.w == 1
         return true
     else

@@ -2,6 +2,10 @@ function translation(x::T,y::T,z::T)::Array{T,2} where {T<:Real}
     return [1 0 0 x; 0 1 0 y; 0 0 1 z; 0 0 0 1]
 end
 
+function translation(x::Real,y::Real,z::Real)
+    return translation(promote(x,y,z)...)
+end
+
 function scaling(x::T,y::T,z::T)::Array{T,2} where {T<:Real}
     return [x 0 0 0; 0 y 0 0; 0 0 z 0; 0 0 0 1]
 end

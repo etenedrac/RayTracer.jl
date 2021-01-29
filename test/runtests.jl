@@ -12,3 +12,7 @@ end
 @testset "Transformations" begin
     include("transformations.jl")
 end
+
+@testset "Rays" begin
+    include("rays.jl")
+end
