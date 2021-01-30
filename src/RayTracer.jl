@@ -8,6 +8,9 @@ module RayTracer
     include("transformations.jl")
     include("rays.jl")
 
+    include("light.jl")
+    include("material.jl")
+
     include("sphere.jl")
 
 end

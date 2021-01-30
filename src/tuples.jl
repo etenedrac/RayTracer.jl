@@ -170,10 +170,19 @@ function cross(a::rt_tuple,b::rt_tuple)
     return vector(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x)
 end
 
+"""
+    reflect(v::rt_tuple,n::rt_tuple)
+
+Reflect a vector 'v' on a surface with a normal vector 'n'.
+"""
+function reflect(v::rt_tuple,n::rt_tuple)::rt_tuple
+    return v - 2*dot(v,n)*n
+end
+
 # Color Operations
 
-function Base.isapprox(a::rt_color,b::rt_color)
-    return (a.red≈b.red) && (a.green≈b.green) && (a.blue≈b.blue)
+function Base.isapprox(a::rt_color,b::rt_color,atol::Real=0)
+    return (≈(a.red,b.red,atol=atol)) && (≈(a.green,b.green,atol=atol)) && (≈(a.blue,b.blue,atol=atol))
 end
 
 function Base.:+(a::rt_color,b::rt_color)::rt_color

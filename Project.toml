@@ -1,7 +1,7 @@
 name = "RayTracer"
 uuid = "be56bf3c-3fa2-4c2c-974f-c185241bb5ad"
 authors = ["Albert Cardenete <albertcardenete95@gmail.com> and contributors"]
-version = "0.1.2"
+version = "0.1.3"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"

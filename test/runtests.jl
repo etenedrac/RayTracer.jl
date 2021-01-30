@@ -16,3 +16,15 @@ end
 @testset "Rays" begin
     include("rays.jl")
 end
+
+@testset "Sphere" begin
+    include("sphere.jl")
+end
+
+@testset "Light" begin
+    include("light.jl")
+end
+
+@testset "Materials" begin
+    include("material.jl")
+end

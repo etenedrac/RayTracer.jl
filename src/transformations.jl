@@ -10,6 +10,10 @@ function scaling(x::T,y::T,z::T)::Array{T,2} where {T<:Real}
     return [x 0 0 0; 0 y 0 0; 0 0 z 0; 0 0 0 1]
 end
 
+function scaling(x::Real,y::Real,z::Real)
+    return scaling(promote(x,y,z)...)
+end
+
 function rotation_x(angle::T)::Array{T,2} where {T<:Real}
     return [1 0 0 0; 0 cos(angle) -sin(angle) 0; 0 sin(angle) cos(angle) 0; 0 0 0 1]
 end

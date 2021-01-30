@@ -149,3 +149,17 @@ end
         @test c1 * c2 ≈ RayTracer.color(0.9,0.2,0.04)
     end
 end
+
+@testset "reflection_at_45_degrees" begin
+    v = RayTracer.vector(1,-1,0)
+    n = RayTracer.vector(0,1,0)
+    r = RayTracer.reflect(v,n)
+    @test r ≈ RayTracer.vector(1,1,0)
+end
+
+@testset "reflection_slanted_surface" begin
+    v = RayTracer.vector(0,-1,0)
+    n = RayTracer.vector(√2/2,√2/2,0)
+    r = RayTracer.reflect(v,n)
+    @test ≈(r,RayTracer.vector(1,0,0),1e-10)
+end
